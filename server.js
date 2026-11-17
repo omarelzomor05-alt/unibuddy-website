@@ -45,6 +45,5 @@ const sessionPath = sessionClient.projectAgentSessionPath('unibuddy-bbgf', sessi
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ UniBuddy Server is live at http://localhost:${PORT}`);
+module.exports = app;
 });
