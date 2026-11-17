@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniBuddy | Intelligent Campus Portal & AI Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-badge">🎓</span> UniBuddy <span class="tag">AI</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Campus Services</a></li>
+      <li><a href="#faq">Quick Guide</a></li>
+      <li><a href="#chat-section">Live Assistant</a></li>
+      <li><a href="https://google.com" target="_blank">Google</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" title="Switch Theme">🌙</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero">
+    <div class="hero-badge">✨ Powered by Google Dialogflow & Node.js</div>
+    <h1>Your Smart University Companion</h1>
+    <p>Instant, 24/7 answers for course registration, exam timetables, academic advising, and campus facilities—all in one place.</p>
+    <div class="hero-buttons">
+      <a href="#chat-section" class="btn-primary">Ask UniBuddy Now →</a>
+      <a href="#services" class="btn-secondary">Explore Services</a>
+    </div>
+
+    <!-- Live Metrics Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <strong>24/7</strong>
+        <span>Instant Support</span>
+      </div>
+      <div class="stat-item">
+        <strong>&lt; 1 sec</strong>
+        <span>AI Response Time</span>
+      </div>
+      <div class="stat-item">
+        <strong>6+</strong>
+        <span>Campus Departments</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive University Services Section -->
+  <section id="services" class="services">
+    <div class="section-header">
+      <h2>University Information & Services</h2>
+      <p>Click any service card below to ask UniBuddy directly</p>
+    </div>
+
+    <div class="cards-container">
+      <div class="card" onclick="triggerTopic('How do I register for courses and check add/drop deadlines?')">
+        <div class="card-icon">📝</div>
+        <h3>Course Registration</h3>
+        <p>Add/drop deadlines, credit hour limits, prerequisites, and advisor approval steps.</p>
+        <span class="card-link">Ask about Registration →</span>
+      </div>
+
+      <div class="card" onclick="triggerTopic('When do final exams start and where is the schedule?')">
+        <div class="card-icon">📅</div>
+        <h3>Exam Schedules</h3>
+        <p>Midterm and final exam dates, hall assignments, seat numbers, and excuse policies.</p>
+        <span class="card-link">Check Exam Dates →</span>
+      </div>
+
+      <div class="card" onclick="triggerTopic('Where can I download course materials and syllabi?')">
+        <div class="card-icon">📚</div>
+        <h3>Course Materials & LMS</h3>
+        <p>Direct access to lecture slides, Moodle/Blackboard portals, and digital library archives.</p>
+        <span class="card-link">Find Materials →</span>
+      </div>
+
+      <div class="card" onclick="triggerTopic('What are the library and campus facility hours?')">
+        <div class="card-icon">🏛️</div>
+        <h3>Campus & Library</h3>
+        <p>Library study room bookings, Wi-Fi setup, student ID replacement, and shuttle times.</p>
+        <span class="card-link">View Campus Info →</span>
+      </div>
+
+      <div class="card" onclick="triggerTopic('How do I apply for scholarships or tuition payment plans?')">
+        <div class="card-icon">💳</div>
+        <h3>Finance & Scholarships</h3>
+        <p>Tuition deadlines, installment plans, merit scholarships, and financial aid office hours.</p>
+        <span class="card-link">Ask about Tuition →</span>
+      </div>
+
+      <div class="card" onclick="triggerTopic('How can I contact my academic advisor or IT support?')">
+        <div class="card-icon">🎧</div>
+        <h3>Advising & IT Helpdesk</h3>
+        <p>Book advising appointments, reset student portal passwords, and get transcript requests.</p>
+        <span class="card-link">Get Support →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Interface Section -->
+  <section id="chat-section" class="chat-wrapper">
+    <div class="section-header">
+      <h2>Live UniBuddy AI Assistant</h2>
+      <p>Connected to Dialogflow NLP Intent Engine</p>
+    </div>
+
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="bot-info">
+          <div class="bot-avatar">🤖</div>
+          <div>
+            <div class="bot-name">UniBuddy Assistant</div>
+            <div class="bot-status"><span class="status-dot"></span> Online • Dialogflow Agent Active</div>
+          </div>
+        </div>
+        <button class="clear-btn" onclick="clearChat()" title="Clear Conversation">🗑️ Reset</button>
+      </div>
+
+      <!-- Messages Display Area -->
+      <div id="chat-box" class="chat-box">
+        <div class="message-row bot-row">
+          <div class="message bot-message">
+            Hi there! 👋 I'm <strong>UniBuddy</strong>, your campus AI assistant. How can I help you today?
+            <span class="timestamp">Just now</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Topic Chips -->
+      <div class="quick-replies">
+        <button onclick="sendQuickQuestion('When do final exams start?')">📅 Exam Dates</button>
+        <button onclick="sendQuickQuestion('How do I register for courses?')">📝 Registration</button>
+        <button onclick="sendQuickQuestion('Where can I find course materials?')">📚 Course Materials</button>
+        <button onclick="sendQuickQuestion('What are the library hours?')">🏛️ Library Hours</button>
+        <button onclick="sendQuickQuestion('How do I pay my tuition?')">💳 Tuition & Aid</button>
+      </div>
+
+      <!-- Input Box -->
+      <div class="chat-input-area">
+        <input type="text" id="user-input" placeholder="Ask about exams, registration, GPA, library..." onkeypress="handleKeyPress(event)">
+        <button id="send-btn" onclick="sendMessage()">Send ➤</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Quick-Jump Bubble -->
+  <a href="#chat-section" class="floating-chat-btn" title="Chat with UniBuddy">💬 Ask AI</a>
+
+  <footer>
+    <p>© 2026 UniBuddy Smart Campus Project • Built with HTML, CSS, JavaScript, Node.js & Dialogflow</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
