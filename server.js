@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const dialogflow = require('@google-cloud/dialogflow');
-const uuid = require('uuid');
+const crypto = require('crypto');
+const uuid = { v4: () => crypto.randomUUID() };
 
 const app = express();
 app.use(cors());
@@ -44,6 +45,5 @@ const sessionPath = sessionClient.projectAgentSessionPath('unibuddy-bbgf', sessi
   }
 });
 
-const PORT = process.env.PORT || 3000;
 module.exports = app;
-});
+
