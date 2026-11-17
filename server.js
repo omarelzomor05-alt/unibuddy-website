@@ -19,8 +19,8 @@ app.post('/chat', async (req, res) => {
   try {
     // Connect to Dialogflow using your downloaded service account JSON key
     const sessionClient = new dialogflow.SessionsClient({
-      keyFilename: './dialogflow-key.json' 
-    });
+    credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
+});
     
 const sessionPath = sessionClient.projectAgentSessionPath('unibuddy-bbgf', sessionId);
     const request = {
